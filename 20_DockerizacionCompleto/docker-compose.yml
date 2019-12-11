@@ -1,0 +1,19 @@
+version: '2'
+services:
+  app:
+    build: .
+    image: openwebinars/apirest
+    ports:
+    - "8080:8080"
+    depends_on:
+    - mypostgres
+    environment:
+    - SPRING_PROFILES_ACTIVE=prod
+  mypostgres:
+    image: postgres
+    ports:
+     - "5432:5432"
+    environment:
+     - POSTGRES_PASSWORD=postgresql
+     - POSTGRES_USER=postgres
+     - POSTGRES_DB=postgres
